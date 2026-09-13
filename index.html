@@ -2058,7 +2058,7 @@
         .lightbox-prev { left: 20px; }
         .lightbox-next { right: 20px; }
 
-        /* ============================================
+               /* ============================================
            WORKS / DISCOGRAPHY SECTION
            ============================================ */
         .works {
@@ -2067,15 +2067,15 @@
 
         .works-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 16px;
         }
 
         .work-card {
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--border-subtle);
-            border-radius: 18px;
+            border-radius: 14px;
             overflow: hidden;
             transition: all 0.4s var(--transition-spring);
             position: relative;
@@ -2089,7 +2089,7 @@
 
         .work-cover {
             position: relative;
-            aspect-ratio: 1;
+            aspect-ratio: 16 / 11;
             overflow: hidden;
             background: var(--bg-tertiary);
         }
@@ -2123,15 +2123,15 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) scale(0.5);
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: var(--gold-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--bg-primary);
-            font-size: 22px;
+            font-size: 18px;
             opacity: 0;
             transition: all 0.4s var(--transition-spring);
             box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
@@ -2145,58 +2145,58 @@
 
         .work-number {
             position: absolute;
-            top: 14px;
-            left: 14px;
+            top: 10px;
+            left: 10px;
             background: rgba(7, 7, 13, 0.8);
             backdrop-filter: blur(10px);
             color: var(--gold-bright);
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             border: 1px solid var(--border-gold);
             z-index: 2;
         }
 
         .work-info {
-            padding: 20px;
+            padding: 14px;
         }
 
         .work-title {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .work-category {
-            font-size: 12px;
+            font-size: 10px;
             color: var(--gold-bright);
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
         }
 
         .work-actions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             align-items: center;
             justify-content: space-between;
         }
 
         .work-listen-btn {
             flex: 1;
-            padding: 10px 16px;
+            padding: 8px 10px;
             background: rgba(212, 175, 55, 0.1);
             border: 1px solid var(--gold-primary);
             color: var(--gold-bright);
             border-radius: 30px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             transition: all 0.3s var(--transition-smooth);
         }
 
@@ -2206,8 +2206,8 @@
         }
 
         .work-platform {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.05);
             display: flex;
@@ -2215,12 +2215,18 @@
             justify-content: center;
             color: var(--text-secondary);
             transition: all 0.3s;
-            font-size: 14px;
+            font-size: 12px;
         }
 
         .work-platform:hover {
             background: var(--gold-gradient);
             color: var(--bg-primary);
+        }
+
+        /* زر عرض المزيد */
+        .load-more-container {
+            text-align: center;
+            margin-top: 50px;
         }
 
         /* ============================================
@@ -4021,6 +4027,15 @@
             <div class="works-grid" id="worksGrid">
                 <!-- Work cards injected by JS -->
             </div>
+            
+            <!-- زر عرض المزيد -->
+            <div class="load-more-container">
+                <button class="btn btn-outline" id="loadMoreWorksBtn" onclick="renderWorks(true)">
+                    <span class="btn-shine"></span>
+                    <i class="fas fa-chevron-down"></i>
+                    <span data-ar="عرض المزيد من الأغاني" data-en="Load More Songs">عرض المزيد من الأغاني</span>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -4514,27 +4529,27 @@
            DATA - All content data
            ============================================ */
 
-        // Songs list with categories and YouTube search links
+              // Songs list with categories and YouTube search links
         const songs = [
-            { title: 'الجدي', titleEn: 'Al-Jadi', category: 'حماسة', categoryEn: 'Hamasah', cover: 'album-cover', featured: false, youtubeId: 'Ib834i1v_5I' },
-            { title: 'الكبير كبير', titleEn: 'Al-Kabir Kabir', category: 'حماسة', categoryEn: 'Hamasah', cover: 'gallery-crowd', featured: false },
-            { title: 'شغل خمشي', titleEn: 'Shughl Khamshi', category: 'شعبية', categoryEn: 'Popular', cover: 'traditional-music', featured: false },
-            { title: 'تعال هنا', titleEn: 'Ta-al Hina', category: 'حماسة', categoryEn: 'Hamasah', cover: 'gallery-performance', featured: false },
-            { title: 'منو القال', titleEn: 'Minu Al-Qal', category: 'حماسة', categoryEn: 'Hamasah', cover: 'gallery-portrait3', featured: false },
-            { title: 'جد جد جاي', titleEn: 'Jad Jad Jay', category: 'حماسة', categoryEn: 'Hamasah', cover: 'gallery-crowd', featured: false },
-            { title: 'راجعين', titleEn: 'Raje-een', category: 'سيرة', categoryEn: 'Sirah', cover: 'gallery-desert', featured: false },
-            { title: 'الشويفع المسلط', titleEn: 'Al-Shuwaif Al-Musalat', category: 'سيرة', categoryEn: 'Sirah', cover: 'gallery-instruments', featured: true, youtubeId: '3YEbIUm3kSU' },
-            { title: 'بلبلا بلبلا', titleEn: 'Balbala Balbala', category: 'شعبية', categoryEn: 'Popular', cover: 'gallery-performance', featured: false, youtubeId: 'Ib834i1v_5I' },
-            { title: 'الشامة', titleEn: 'Al-Shamah', category: 'حماسة', categoryEn: 'Hamasah', cover: 'gallery-portrait4', featured: false },
-            { title: 'ناس شندي', titleEn: 'Nas Shandi', category: 'حماسة', categoryEn: 'Hamasah', cover: 'traditional-music', featured: false },
-            { title: 'الصقريه', titleEn: 'Al-Saqriah', category: 'حماسة', categoryEn: 'Hamasah', cover: 'gallery-crowd', featured: false },
-            { title: 'حليل اهلنا', titleEn: 'Haleel Ahlana', category: 'سيرة', categoryEn: 'Sirah', cover: 'gallery-desert', featured: false },
-            { title: 'البيبان قصاد بعض', titleEn: 'Al-Biban Qusud Baad', category: 'حماسة', categoryEn: 'Hamasah', cover: 'gallery-studio', featured: false },
-            { title: 'الفراس', titleEn: 'Al-Faras', category: 'كليب 2026', categoryEn: 'Clip 2026', cover: 'concert-stage', featured: true, youtubeId: 'RdkAcbPsOe4' },
-            { title: 'اسياد المقام', titleEn: 'Asyad Al-Maqam', category: 'كليب 2026', categoryEn: 'Clip 2026', cover: 'gallery-portrait4', featured: true, youtubeId: 'sPW-W00hxEA' },
-            { title: 'نسو العشره', titleEn: 'Nisu Al-Ashra', category: 'كليب 2026', categoryEn: 'Clip 2026', cover: 'gallery-portrait2', featured: true, youtubeId: 'VkoVqSdRNLQ' },
-            { title: 'شتيل العنب', titleEn: 'Shateel Al-Anab', category: 'كليب 2025', categoryEn: 'Clip 2025', cover: 'gallery-studio', featured: true, youtubeId: 'OrUNduB3Vos' },
-            { title: 'سلمو لي عليه', titleEn: 'Salimo Li Alaih', category: 'كليب 2026', categoryEn: 'Clip 2026', cover: 'gallery-desert', featured: true, youtubeId: 'oxKQJQYSNgg' }
+            { title: 'الجدي', titleEn: 'Al-Jadi', category: 'حماسة', categoryEn: 'Hamasah', cover: 'https://img.youtube.com/vi/Ib834i1v_5I/hqdefault.jpg', featured: false, youtubeId: 'Ib834i1v_5I' },
+            { title: 'الكبير كبير', titleEn: 'Al-Kabir Kabir', category: 'حماسة', categoryEn: 'Hamasah', cover: 'https://scontent.fruh4-6.fna.fbcdn.net/v/t39.30808-6/490172250_1220091872811113_4483503907524547631_n.jpg', featured: false },
+            { title: 'شغل خمشي', titleEn: 'Shughl Khamshi', category: 'شعبية', categoryEn: 'Popular', cover: 'https://scontent.fruh4-5.fna.fbcdn.net/v/t39.30808-6/487985959_1218637282956572_2186867615520316772_n.jpg', featured: false },
+            { title: 'تعال هنا', titleEn: 'Ta-al Hina', category: 'حماسة', categoryEn: 'Hamasah', cover: 'https://scontent.fruh4-4.fna.fbcdn.net/v/t39.30808-6/477795796_1179670033519964_3336756444300590257_n.jpg', featured: false },
+            { title: 'منو القال', titleEn: 'Minu Al-Qal', category: 'حماسة', categoryEn: 'Hamasah', cover: 'https://github.com/mazen-alqayser/mohamedbashirmusic/blob/main/IMG_9395.jpeg?raw=true', featured: false },
+            { title: 'جد جد جاي', titleEn: 'Jad Jad Jay', category: 'حماسة', categoryEn: 'Hamasah', cover: 'https://scontent.fruh4-4.fna.fbcdn.net/v/t39.30808-6/481263733_1188450825975218_4162416053060625742_n.jpg', featured: false },
+            { title: 'راجعين', titleEn: 'Raje-een', category: 'سيرة', categoryEn: 'Sirah', cover: 'https://scontent.fruh4-5.fna.fbcdn.net/v/t39.30808-6/477963279_1180190763467891_8857045478205232154_n.jpg', featured: false },
+            { title: 'الشويفع المسلط', titleEn: 'Al-Shuwaif Al-Musalat', category: 'سيرة', categoryEn: 'Sirah', cover: 'https://img.youtube.com/vi/3YEbIUm3kSU/hqdefault.jpg', featured: true, youtubeId: '3YEbIUm3kSU' },
+            { title: 'بلبلا بلبلا', titleEn: 'Balbala Balbala', category: 'شعبية', categoryEn: 'Popular', cover: 'https://img.youtube.com/vi/Ib834i1v_5I/hqdefault.jpg', featured: false, youtubeId: 'Ib834i1v_5I' },
+            { title: 'الشامة', titleEn: 'Al-Shamah', category: 'حماسة', categoryEn: 'Hamasah', cover: 'https://scontent.fruh4-5.fna.fbcdn.net/v/t39.30808-6/481212861_1190333609120273_1145637623978723552_n.jpg', featured: false },
+            { title: 'ناس شندي', titleEn: 'Nas Shandi', category: 'حماسة', categoryEn: 'Hamasah', cover: 'https://scontent.fruh4-5.fna.fbcdn.net/v/t39.30808-6/487782160_1218637372956563_6975548823833284394_n.jpg', featured: false },
+            { title: 'الصقريه', titleEn: 'Al-Saqriah', category: 'حماسة', categoryEn: 'Hamasah', cover: 'https://scontent.fruh4-4.fna.fbcdn.net/v/t39.30808-6/481054143_1187042116116089_5892851401011386710_n.jpg', featured: false },
+            { title: 'حليل اهلنا', titleEn: 'Haleel Ahlana', category: 'سيرة', categoryEn: 'Sirah', cover: 'https://scontent.fruh4-5.fna.fbcdn.net/v/t39.30808-6/477963279_1180190763467891_8857045478205232154_n.jpg', featured: false },
+            { title: 'البيبان قصاد بعض', titleEn: 'Al-Biban Qusud Baad', category: 'حماسة', categoryEn: 'Hamasah', cover: 'https://scontent.fruh4-2.fna.fbcdn.net/v/t39.30808-6/481957965_1193107018842932_6347700584176892318_n.jpg', featured: false },
+            { title: 'الفراس', titleEn: 'Al-Faras', category: 'كليب 2026', categoryEn: 'Clip 2026', cover: 'https://img.youtube.com/vi/RdkAcbPsOe4/hqdefault.jpg', featured: true, youtubeId: 'RdkAcbPsOe4' },
+            { title: 'اسياد المقام', titleEn: 'Asyad Al-Maqam', category: 'كليب 2026', categoryEn: 'Clip 2026', cover: 'https://img.youtube.com/vi/sPW-W00hxEA/hqdefault.jpg', featured: true, youtubeId: 'sPW-W00hxEA' },
+            { title: 'نسو العشره', titleEn: 'Nisu Al-Ashra', category: 'كليب 2026', categoryEn: 'Clip 2026', cover: 'https://img.youtube.com/vi/VkoVqSdRNLQ/hqdefault.jpg', featured: true, youtubeId: 'VkoVqSdRNLQ' },
+            { title: 'شتيل العنب', titleEn: 'Shateel Al-Anab', category: 'كليب 2025', categoryEn: 'Clip 2025', cover: 'https://img.youtube.com/vi/OrUNduB3Vos/hqdefault.jpg', featured: true, youtubeId: 'OrUNduB3Vos' },
+            { title: 'سلمو لي عليه', titleEn: 'Salimo Li Alaih', category: 'كليب 2026', categoryEn: 'Clip 2026', cover: 'https://img.youtube.com/vi/oxKQJQYSNgg/hqdefault.jpg', featured: true, youtubeId: 'oxKQJQYSNgg' }
         ];
 
         // Videos data
@@ -4828,6 +4843,9 @@
         /* ============================================
            WORKS RENDERING
            ============================================ */
+             /* ============================================
+           WORKS RENDERING
+           ============================================ */
         function renderWorks() {
             const grid = document.getElementById('worksGrid');
             if (!grid) return;
@@ -4844,7 +4862,7 @@
 
                 card.innerHTML = `
                     <div class="work-cover">
-                        <img src="assets/${song.cover}.png" alt="${song.title}" loading="lazy">
+                        <img src="${song.cover}" alt="${song.title}" loading="lazy" onerror="this.src='https://scontent.fruh4-2.fna.fbcdn.net/v/t39.30808-6/503846050_1265489178271382_1268612993820235997_n.jpg';">
                         <div class="work-number">#${String(idx + 1).padStart(2, '0')}</div>
                         <a href="${listenUrl}" target="_blank" rel="noopener" class="work-play">
                             <i class="fas fa-play"></i>
