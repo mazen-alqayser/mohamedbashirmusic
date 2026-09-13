@@ -2346,7 +2346,7 @@
             color: var(--gold-primary);
         }
 
-        /* ============================================
+                /* ============================================
            INTERNATIONAL PARTICIPATIONS
            ============================================ */
         .international {
@@ -2365,8 +2365,9 @@
 
         .countries-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
+            /* تم تقليل الحجم الأدنى من 280px إلى 200px لتظهر بطاقات أكثر وأصغر */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px; /* تقليل المسافة بين البطاقات */
             position: relative;
             z-index: 1;
         }
@@ -2375,8 +2376,8 @@
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border: 1px solid var(--border-subtle);
-            border-radius: 18px;
-            padding: 28px;
+            border-radius: 14px; /* تقليل استدارة الحواف */
+            padding: 16px; /* تقليل الحشو الداخلي للبطاقة */
             transition: all 0.4s var(--transition-spring);
             position: relative;
             overflow: hidden;
@@ -2388,7 +2389,7 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px; /* تقليل سمك الشريط العلوي */
             background: var(--gold-shimmer);
             background-size: 200% 100%;
             opacity: 0;
@@ -2396,9 +2397,9 @@
         }
 
         .country-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
             border-color: var(--gold-primary);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), var(--shadow-gold);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), var(--shadow-gold);
         }
 
         .country-card:hover::before {
@@ -2414,14 +2415,14 @@
         .country-header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
+            gap: 12px; /* تقليل المسافة بين العلم والاسم */
+            margin-bottom: 12px;
         }
 
         .country-flag {
-            width: 70px;
-            height: 47px;
-            border-radius: 6px;
+            width: 48px; /* تصغير حجم العلم من 70 إلى 48 */
+            height: 32px;
+            border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             flex-shrink: 0;
@@ -2437,30 +2438,30 @@
 
         .country-name {
             font-family: var(--font-ar-display);
-            font-size: 22px;
+            font-size: 16px; /* تصغير خط اسم الدولة من 22 إلى 16 */
             font-weight: 800;
             color: var(--text-primary);
             margin-bottom: 2px;
         }
 
         .country-name-en {
-            font-size: 12px;
+            font-size: 10px; /* تصغير الخط الإنجليزي */
             color: var(--gold-bright);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         .country-desc {
             color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 16px;
+            font-size: 12px; /* تصغير خط الوصف */
+            line-height: 1.5;
+            margin-bottom: 12px;
         }
 
         .country-meta {
             display: flex;
-            gap: 12px;
-            padding-top: 14px;
+            gap: 8px;
+            padding-top: 10px;
             border-top: 1px solid var(--border-subtle);
         }
 
@@ -2468,14 +2469,14 @@
             flex: 1;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 12px;
+            gap: 4px;
+            font-size: 10px; /* تصغير خط التفاصيل السفلية */
             color: var(--text-muted);
         }
 
         .country-meta-item i {
             color: var(--gold-primary);
-            font-size: 13px;
+            font-size: 11px;
         }
 
         /* ============================================
@@ -3570,7 +3571,6 @@
             color: #25D366;
             font-size: 14px;
         }
-
         /* إعدادات التجاوب مع الشاشات الصغيرة - تجعل الزر العائم ملء عرض الشاشة */
         @media (max-width: 576px) {
             .help-widget {
@@ -3578,16 +3578,19 @@
                 right: 16px;
                 left: 16px;
                 align-items: stretch;
+                pointer-events: none; /* يسمح للنقر بالمرور عبر الحاوية للوصول للفوتر */
             }
             .help-toggle {
                 width: 100%;
                 justify-content: center;
                 padding: 12px 18px;
                 font-size: 14px;
+                pointer-events: auto; /* يعيد تفعيل النقر على الزر نفسه فقط */
             }
             .help-menu {
                 min-width: 0;
                 width: 100%;
+                pointer-events: auto; /* يعيد تفعيل النقر على القائمة المنبثقة */
             }
             .back-to-top {
                 left: 16px;
@@ -3610,7 +3613,7 @@
                 padding: 24px 18px;
             }
         }
-
+        
         /* تجاوب الشاشات المتوسطة */
         @media (max-width: 992px) and (min-width: 577px) {
             .help-toggle {
@@ -4307,9 +4310,9 @@
             </div>
         </div>
 
-        <!-- Developer Credit with Spinning Logo -->
+               <!-- Developer Credit with Spinning Logo -->
         <div class="developer-credit">
-            <div class="developer-logo-wrapper">
+            <a href="https://mazenalqaysercv.vercel.app/" target="_blank" rel="noopener noreferrer" class="developer-logo-wrapper" style="text-decoration: none; color: inherit; cursor: pointer;">
                 <div class="developer-logo">
                     <svg viewBox="0 0 100 100">
                         <!-- Outer rotating ring with segments -->
@@ -4331,17 +4334,17 @@
                     </svg>
                 </div>
 
-                <a href="https://mazenalqaysercv.vercel.app/" target="_blank" rel="noopener noreferrer" class="developer-text" style="text-decoration: none; color: inherit; cursor: pointer; display: block;">
-    <div class="powered-by">POWERED BY</div>
-    <div class="developer-name">MAZEN AL-QAYSER</div>
-    <div class="developer-ar" data-ar="تطوير المهندس مازن القيصر" data-en="Developed by Eng. Mazen Al-Qayser">
-        تطوير المهندس مازن القيصر
-    </div>
-    <div class="developer-title" data-ar="مهندس ومبرمج ومطور واجهات أمامية" data-en="Engineer · Programmer · Front-End Developer">
-        مهندس ومبرمج ومطور واجهات أمامية
-    </div>
-</a>
-            </div>
+                <div class="developer-text">
+                    <div class="powered-by">POWERED BY</div>
+                    <div class="developer-name">MAZEN AL-QAYSER</div>
+                    <div class="developer-ar" data-ar="تطوير المهندس مازن القيصر" data-en="Developed by Eng. Mazen Al-Qayser">
+                        تطوير المهندس مازن القيصر
+                    </div>
+                    <div class="developer-title" data-ar="مهندس ومبرمج ومطور واجهات أمامية" data-en="Engineer · Programmer · Front-End Developer">
+                        مهندس ومبرمج ومطور واجهات أمامية
+                    </div>
+                </div>
+            </a>
         </div>
 
         <div class="footer-bottom">
@@ -4351,10 +4354,10 @@
                 <span data-ar="جميع الحقوق محفوظة" data-en="All Rights Reserved">جميع الحقوق محفوظة</span>
             </p>
            <a href="https://mazenalqaysercv.vercel.app/" target="_blank" rel="noopener noreferrer" style="text-decoration: none; margin-top: 8px; font-size: 11px; color: var(--text-muted); display: inline-block;">
-    <span data-ar="تصميم وتطوير" data-en="Designed & Developed by">تصميم وتطوير</span>
-    <strong style="color: var(--gold-primary);">MAZEN AL-QAYSER</strong>
-    <span data-ar="· المهندس مازن القيصر" data-en="· Eng. Mazen Al-Qayser">· المهندس مازن القيصر</span>
-</a>
+                <span data-ar="تصميم وتطوير" data-en="Designed & Developed by">تصميم وتطوير</span>
+                <strong style="color: var(--gold-primary);">MAZEN AL-QAYSER</strong>
+                <span data-ar="· المهندس مازن القيصر" data-en="· Eng. Mazen Al-Qayser">· المهندس مازن القيصر</span>
+           </a>
         </div>
     </footer>
 
